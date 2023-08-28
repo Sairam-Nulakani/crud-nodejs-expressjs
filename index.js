@@ -46,6 +46,14 @@ app.patch("/api/tours/:id", async (req, res) => {
   res.status(200).json({ message: "success", tour: "Updated Tour" });
 });
 
+app.delete("/api/tours/:id", async (req, res) => {
+  if (req.params.id * 1 > tours.length) {
+    return res.status(404).send("Tour not found");
+  }
+  res.status(204).json({ message: "success", data: null });
+});
+
 app.listen(8080, () => {
   console.log("Server is running on port 8080");
 });
+ 
