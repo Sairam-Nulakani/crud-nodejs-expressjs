@@ -4,9 +4,12 @@ const users = JSON.parse(fs.readFileSync("./dev-data/data/users.json"));
 
 exports.getAllUsers = async (req, res) => {
   try {
-    return res
-      .status(200)
-      .json({ message: "success", length: users.length, users: users });
+    return res.status(200).json({
+      message: "success",
+      requestedAt: req.requestedTime,
+      length: users.length,
+      users: users,
+    });
   } catch (err) {
     return res.status(400).send(err);
   }
